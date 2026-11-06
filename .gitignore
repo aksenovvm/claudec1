@@ -6,3 +6,5 @@ out/
 .rag-index.json
 .DS_Store
 *.log
+next-env.d.ts
+*.tsbuildinfo

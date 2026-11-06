@@ -10,10 +10,10 @@
   - [x] 1.4 Коммит и пуш в ветку
 
 2 Каркас Next.js
-  - [ ] 2.1 Создать проект Next.js (App Router, TypeScript, Tailwind, ESLint)
-  - [ ] 2.2 Добавить `.env.example` с `GEMINI_API_KEY`
-  - [ ] 2.3 Создать папку `knowledge/` (источник документов для RAG, пока пустая)
-  - [ ] 2.4 Проверить `npm run build`, коммит и пуш
+  - [x] 2.1 Создать проект Next.js 16 (App Router, TypeScript, Tailwind 4, ESLint)
+  - [x] 2.2 Добавить `.env.example` с `GEMINI_API_KEY`
+  - [x] 2.3 Создать папку `knowledge/` (источник документов для RAG, пока пустая)
+  - [x] 2.4 Проверить `npm run build`, коммит и пуш
 
 3 Дизайн-направление (taste + frontend-design)
   - [ ] 3.1 Прочитать скиллы, сформулировать направление: тёмная палитра, шрифты, сетка, фирменная деталь
