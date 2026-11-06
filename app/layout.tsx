@@ -1,22 +1,17 @@
 import type { Metadata } from "next";
-import { Onest, Source_Serif_4 } from "next/font/google";
+import { Jost } from "next/font/google";
 import "./globals.css";
 
-const onest = Onest({
+const jost = Jost({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-onest",
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-source-serif",
+  weight: ["300", "400", "500"],
+  variable: "--font-jost",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Школа фотографии",
-  description: "Онлайн-курсы по фотографии",
+  title: "Курсы фотографии Анны Канаки",
+  description: "Онлайн-курсы по свадебной и семейной фотографии от фотографа Анны Канаки",
 };
 
 export default function RootLayout({
@@ -25,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${onest.variable} ${sourceSerif.variable}`}>
+    <html lang="ru" className={jost.variable}>
       <body>{children}</body>
     </html>
   );

@@ -1,55 +1,54 @@
 @import "tailwindcss";
 
 /*
-  Направление «Зонная система»: страница — это тональная шкала чёрно-белого отпечатка
-  (зоны 0–X по Адамсу). Цвет на странице дают только фотографии учеников и преподавателей;
-  единственный цвет интерфейса — «вольфрам», тёплый свет лампы 3200 K, для действий и фокуса.
+  Направление «Зонная система» в палитре Анны Канаки (annakanaki.wfolio.pro):
+  чистый чёрный фон и слоновая кость, как на её сайте; тёплые тона взяты из её фотографий.
+  Интерфейс почти бесцветный, цвет на странице дают фотографии.
   Подробно: docs/design-direction.md
 */
 
 @theme static {
   /* Цвет */
-  --color-bg: #1a1918;        /* зона II: фон страницы */
-  --color-surface: #242321;   /* зона III: карточки, поля, чат */
-  --color-line: #383532;      /* разделители и рамки полей */
-  --color-muted: #9c978f;     /* зона VI: второстепенный текст, 6.0:1 на фоне */
-  --color-ink: #ece8e1;       /* зона IX: основной текст, 14.4:1 на фоне */
-  --color-tungsten: #e3a65b;  /* действие, ссылка, фокус; 8.3:1 на фоне */
-  --color-tungsten-ink: #1a1918;
+  --color-bg: #000000;        /* фон, как на сайте Анны */
+  --color-surface: #141210;   /* карточки, поля, чат */
+  --color-line: #2e2a27;      /* разделители и рамки полей */
+  --color-muted: #a79a91;     /* тауп из её фото: второстепенный текст, 7.7:1 */
+  --color-ink: #f3eee7;       /* слоновая кость: текст и главные кнопки, 18.2:1 */
+  --color-ink-on: #000000;    /* текст на кнопке цвета ink */
+  --color-camel: #c0a890;     /* цвет тренча из её фото: фокус, выделение, активное, 9.3:1 */
 
-  /* Шкала зон 0–X: фирменная деталь (полоса экспозиции) */
+  /* Тёплая шкала зон 0–X: фирменная деталь */
   --color-zone-0: #000000;
   --color-zone-1: #060606;
-  --color-zone-2: #131313;
-  --color-zone-3: #252525;
-  --color-zone-4: #3b3b3b;
-  --color-zone-5: #545454;
-  --color-zone-6: #717171;
-  --color-zone-7: #909090;
-  --color-zone-8: #b2b2b2;
-  --color-zone-9: #d7d7d7;
-  --color-zone-10: #ffffff;
+  --color-zone-2: #131212;
+  --color-zone-3: #232322;
+  --color-zone-4: #383735;
+  --color-zone-5: #504f4c;
+  --color-zone-6: #6b6966;
+  --color-zone-7: #898783;
+  --color-zone-8: #aaa7a2;
+  --color-zone-9: #cdc9c3;
+  --color-zone-10: #f3eee7;
 
-  /* Шрифты (подключаются в app/layout.tsx через next/font) */
-  --font-display: var(--font-source-serif), Georgia, serif;
-  --font-sans: var(--font-onest), system-ui, sans-serif;
+  /* Шрифт (подключается в app/layout.tsx через next/font) */
+  --font-sans: var(--font-jost), "Futura", system-ui, sans-serif;
 
   /* Шкала размеров текста */
   --text-label: 13px;
-  --text-small: 14px;
+  --text-small: 15px;
   --text-body: 17px;
   --text-lead: 20px;
-  --text-h3: 24px;
-  --text-h2: clamp(32px, 1.9vw + 24px, 52px);
-  --text-h1: clamp(40px, 3.6vw + 26px, 84px);
+  --text-h3: 26px;
+  --text-h2: clamp(34px, 2vw + 26px, 56px);
+  --text-h1: clamp(42px, 4vw + 26px, 92px);
 
   /* Сетка и ритм */
   --container-page: 1280px;
   --spacing-gut: clamp(20px, 5.5vw, 80px);
   --spacing-section: clamp(72px, 8vw, 120px);
 
-  /* Радиус: мягкий, как скругление кадра на плёнке */
-  --radius-frame: 6px;
+  /* Радиус: фото без скруглений, кнопки-«таблетки», как у Анны */
+  --radius-frame: 2px;
   --radius-control: 999px;
 }
 
@@ -64,6 +63,7 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
+    font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
@@ -71,21 +71,20 @@
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-tungsten);
+    outline: 2px solid var(--color-camel);
     outline-offset: 3px;
   }
 
   ::selection {
-    background: var(--color-tungsten);
-    color: var(--color-tungsten-ink);
+    background: var(--color-camel);
+    color: var(--color-bg);
   }
 
   @media (prefers-reduced-motion: reduce) {
