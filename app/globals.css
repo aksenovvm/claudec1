@@ -56,6 +56,7 @@
   html {
     color-scheme: dark;
     background: var(--color-bg);
+    scroll-padding-top: 4rem; /* высота шапки */
   }
 
   body {
