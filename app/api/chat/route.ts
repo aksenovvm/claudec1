@@ -1,5 +1,6 @@
 // Чат ассистента. Протокол: POST { messages: [{ role: "user" | "assistant", text }] }.
 // Успех — поток простого текста (ответ по частям), ошибка — JSON { error } с понятным текстом.
+import { ThinkingLevel } from "@google/genai";
 import { CHAT_MODEL, embed, gemini } from "@/lib/rag/gemini";
 import { loadIndex, search } from "@/lib/rag/store";
 
@@ -66,7 +67,11 @@ export async function POST(req: Request) {
         role: m.role === "user" ? "user" : "model",
         parts: [{ text: m.text.slice(0, MAX_TEXT) }],
       })),
-      config: { systemInstruction: `${SYSTEM}\n\nФрагменты базы знаний:\n\n${context}` },
+      config: {
+        systemInstruction: `${SYSTEM}\n\nФрагменты базы знаний:\n\n${context}`,
+        // Без долгих «размышлений» перед ответом: для вопросов о курсах они не нужны и только замедляют.
+        thinkingConfig: { thinkingLevel: ThinkingLevel.MINIMAL },
+      },
     });
 
     const encoder = new TextEncoder();
