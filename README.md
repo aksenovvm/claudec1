@@ -25,12 +25,32 @@
 
 ## Как забрать проект на свой компьютер
 
+Нужны [Git](https://git-scm.com/downloads) и [Node.js](https://nodejs.org/) версии 22 или новее.
+
 ```bash
 git clone -b claude/stoic-franklin-wwsy1n https://github.com/aksenovvm/claudec1.git "D:\Мирослав\claudec1"
 ```
 
-Обновить после новых шагов:
+```bash
+cd "D:\Мирослав\claudec1"
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Сайт откроется на http://localhost:3000.
+
+Обновить после новых шагов (если изменился `package.json`, `npm install` обязателен, иначе будет ошибка `Module not found`):
 
 ```bash
 git pull
+```
+
+```bash
+npm install
 ```
