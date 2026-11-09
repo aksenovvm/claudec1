@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getContent, type Level } from "@/lib/content";
+import Assistant from "@/components/Assistant";
 
 const LEVEL_STEPS: Record<Level, number> = { Новичок: 3, Средний: 6, Продвинутый: 9 };
 const photo = (file: string) => `/photos/${file}`;
@@ -50,6 +51,7 @@ export default async function Home() {
               ["#about", "Об Анне"],
               ["#works", "Работы"],
               ["#faq", "Вопросы"],
+              ["#assistant", "Ассистент"],
             ].map(([href, label]) => (
               <a key={href} href={href} className="text-muted transition-colors hover:text-ink">
                 {label}
@@ -214,6 +216,20 @@ export default async function Home() {
                 </details>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Ассистент */}
+        <section id="assistant" className="border-t border-line py-(--spacing-section)">
+          <div className={`${wrap} grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr]`}>
+            <div>
+              <h2 className={h2}>{main["Ассистент: заголовок"]}</h2>
+              <p className="mt-6 max-w-[48ch] text-(length:--text-lead) text-muted">{main["Ассистент: текст"]}</p>
+            </div>
+            <Assistant
+              examples={main["Ассистент: примеры вопросов"].split("\n").map((q) => q.trim()).filter(Boolean)}
+              telegram={telegram}
+            />
           </div>
         </section>
 
