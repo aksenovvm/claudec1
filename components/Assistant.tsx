@@ -35,11 +35,11 @@ export default function Assistant({ examples, telegram }: Props) {
       });
       if (!res.ok || !res.body) {
         const data = await res.json().catch(() => null);
-        throw new Error(data?.error ?? "Ассистент не ответил. Попробуйте ещё раз через минуту.");
+        setError(data?.error ?? "Ассистент не ответил. Попробуйте ещё раз через минуту.");
+        return;
       }
 
       // Ответ приходит по частям: дописываем их в последнее сообщение.
-      setMessages([...history, { role: "assistant", text: "" }]);
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let answer = "";
@@ -49,8 +49,8 @@ export default function Assistant({ examples, telegram }: Props) {
         answer += decoder.decode(value, { stream: true });
         setMessages([...history, { role: "assistant", text: answer }]);
       }
-    } catch (e) {
-      setError(e instanceof Error && e.message !== "Failed to fetch" ? e.message : "Нет связи с сервером. Проверьте интернет и попробуйте ещё раз.");
+    } catch {
+      setError("Связь с ассистентом прервалась. Проверьте интернет и попробуйте ещё раз.");
     } finally {
       setLoading(false);
     }
