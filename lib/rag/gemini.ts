@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 // Модели Gemini: одна отвечает в чате, вторая превращает текст в векторы для поиска.
-export const CHAT_MODEL = "gemini-3.8-flash";
+export const CHAT_MODEL = "gemini-3.5-flash";
 export const EMBED_MODEL = "gemini-embedding-001";
 const DIMENSIONS = 768;
 
