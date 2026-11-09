@@ -249,7 +249,7 @@ export default async function Home() {
         <div className={`${wrap} flex flex-col gap-4 text-(length:--text-small) text-muted sm:flex-row sm:items-center sm:justify-between`}>
           <p>© {new Date().getFullYear()} Анна Канаки. Все фотографии — работы Анны.</p>
           <a href={main["Сайт-портфолио"]} className="hover:text-ink" target="_blank" rel="noreferrer">
-            annakanaki.wfolio.pro
+            Портфолио
           </a>
         </div>
       </footer>
