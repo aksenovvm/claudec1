@@ -1,0 +1,3 @@
+{
+  "buildCommand": "if [ -n \"$GEMINI_API_KEY\" ]; then npm run ingest; fi && next build"
+}
